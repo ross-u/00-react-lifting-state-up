@@ -19,15 +19,33 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-card {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  width: 600px;
+  overflow: hidden;
+}
+
+button {
+  width: 120px;
+  height: 60px;
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+button.delete {
+  background: rgb(243, 40, 57);
+}
+
+button.add {
+  background: rgb(101, 206, 118);
 }
