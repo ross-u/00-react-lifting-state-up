@@ -31,7 +31,7 @@ class ToDoList extends Component {
     taskListCopy.forEach((taskObj, index) => {
       if(taskObj.id === id) {
         taskListCopy.splice(index, 1);
-        tasksCompleted--;
+        if (tasksCompleted > 0) tasksCompleted--;
       }
     })
     this.setState( {tasks: taskListCopy, tasksCompleted} );
