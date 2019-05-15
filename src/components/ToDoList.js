@@ -17,7 +17,6 @@ class ToDoList extends Component {
       We `bind` `this` as we need it to point to <ToDoList> component which has the `state`.
     ***/
   };
-  
 
   /***  
     State shouldn't be modified directly. 
@@ -31,7 +30,7 @@ class ToDoList extends Component {
     taskListCopy.forEach((taskObj, index) => {
       if(taskObj.id === id) {
         taskListCopy.splice(index, 1);
-        if (tasksCompleted > 0) tasksCompleted--;
+        tasksCompleted--;
       }
     })
     this.setState( {tasks: taskListCopy, tasksCompleted} );
