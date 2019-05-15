@@ -2,11 +2,11 @@ import React from 'react';
 
 class Task extends React.Component {
   state = {
-    isDone: false
+    taskCompleted: false
   }
 
   toggleTask () {
-    this.setState( { isDone: !this.state.isDone } )
+    this.setState( { taskCompleted: !this.state.taskCompleted } )
   }
 
   render() {
@@ -15,7 +15,7 @@ class Task extends React.Component {
     <div className='task-card-half'>
       <h1>{this.props.name}</h1>
       {
-        this.state.isDone ?
+        this.state.taskCompleted ?
         <h3 style={{color: 'green'}}>DONE ✅</h3>
         :
         <h3 style={{color: 'red'}}>PENDING</h3>
@@ -28,7 +28,7 @@ class Task extends React.Component {
       <button className='delete' onClick={ ()=> this.props.deleteTask(this.props.id) }>DELETE</button>
       <button className='add' onClick={ ()=> this.toggleTask() }>
       {
-        this.state.isDone ?
+        this.state.taskCompleted ?
         <span>UNDO ❌</span>
         :
         <span>✅</span>
