@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
 import Task from "./Task";
 import Summary from './Summary';
+import data from './../data.js'
 
 class ToDoList extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: [
-        {id: 'asd123', name: "Task1", isDone: false, description: 'Do something important'},
-        {id: 'lio567', name: "Task2", isDone: false, description: 'Do something important'},
-        {id: 'rty445', name: "Task3", isDone: false, description: 'Do something important'},
-        {id: 'sdx123', name: "Task4", isDone: false, description: 'Do something important'},
-        {id: 'aop113', name: "Task5", isDone: false, description: 'Do something important'}
-      ]
+      tasks: data
     };
-
-    /* 
-     We bind the method because it will be called by another component (object)
-     and it would have wrong `this` (context), as `this` points to whatever is calling the function.
-     To make sure that our functions are always connected to ToDo, because they are changing it's state,
-     we need to bind `this` to point to the ToDo component
-     */
-
+    
     this.toggleTaskDone = this.toggleTaskDone.bind(this);
-    this.deleteToDoList = this.deleteToDoList.bind(this);
+    this.deleteToDoList = this.deleteToDoList.bind(this);   
+    /*** 
+      We bind the method because it will be called by a component (<Task> - object)
+      and without binding, `this` will be pointing to `<Task>` component that invoked the method.
+      We `bind` `this` as we need it to point to <ToDoList> component which has the `state`.
+    ***/
   };
   
   toggleTaskDone(id) {
+    console.log('What is `this`', this)
     const taskListCopy = [...this.state.tasks];
     taskListCopy.forEach((taskObj) => {
       if(taskObj.id === id) {
@@ -36,12 +30,12 @@ class ToDoList extends Component {
     this.setState( {tasks: taskListCopy} );
   }
 
-  deleteToDoList (id)  {
   /***  
     State shouldn't be modified directly. 
     Splice modifies the orginal array it's called on. 
     Therefore we're using the spread operator to copy the array first. ;)
   ***/
+  deleteToDoList (id)  {
     const taskListCopy = [...this.state.tasks];
     taskListCopy.forEach((taskObj, index) => {
       if(taskObj.id === id) {
