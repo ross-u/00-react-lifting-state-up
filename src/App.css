@@ -21,23 +21,30 @@
 
 .todo-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .task-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 30px;
-  margin-bottom: 30px;
-  width: 600px;
+  padding: 20px 10px;
+  margin: 10px;
+  width: 250px;
+  height: 500px;
+}
+
+.task-card-half {
+  height: 50%;
   overflow: hidden;
 }
 
 button {
   width: 120px;
   height: 60px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 10px;
   font-size: 20px;
 }
@@ -48,4 +55,9 @@ button.delete {
 
 button.add {
   background: rgb(101, 206, 118);
+}
+
+.tasks-completed {
+  font-size: 40px;
+  margin: 5px
 }

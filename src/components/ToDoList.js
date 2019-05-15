@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Task from "./Task";
+import Summary from './Summary';
 
-class ToDo extends Component {
+class ToDoList extends Component {
   constructor() {
     super();
     this.state = {
       tasks: [
-        {id: 'asdfgh123', name: "Task1"}, {id: 'hjklio567', name: "Task2"}, {id: 'rtyoiu445', name: "Task3"}, {id: 'asdftt123', name: "Task4"}, {id: 'asssdgh123', name: "Task5"}
+        {id: 'asd123', name: "Task1", isDone: false, description: 'Do something important'},
+        {id: 'lio567', name: "Task2", isDone: false, description: 'Do something important'},
+        {id: 'rty445', name: "Task3", isDone: false, description: 'Do something important'},
+        {id: 'sdx123', name: "Task4", isDone: false, description: 'Do something important'},
+        {id: 'aop113', name: "Task5", isDone: false, description: 'Do something important'}
       ]
     };
 
@@ -17,15 +22,15 @@ class ToDo extends Component {
      we need to bind `this` to point to the ToDo component
      */
 
-    this.updateToDoList = this.updateToDoList.bind(this);
+    this.toggleTaskDone = this.toggleTaskDone.bind(this);
     this.deleteToDoList = this.deleteToDoList.bind(this);
   };
   
-  updateToDoList (id, newNameValue)  {
+  toggleTaskDone(id) {
     const taskListCopy = [...this.state.tasks];
     taskListCopy.forEach((taskObj) => {
       if(taskObj.id === id) {
-        taskObj.name += newNameValue;
+        taskObj.isDone = !taskObj.isDone;
       }
     })
     this.setState( {tasks: taskListCopy} );
@@ -48,21 +53,24 @@ class ToDo extends Component {
 
   render() {
     return (
-      <div className='todo-container'>
-        {
-          this.state.tasks.map( (task) => {
-            return <Task 
-                    id={task.id}
-                    deleteTask={ this.deleteToDoList }
-                    updateTask={ this.updateToDoList }
-                    key={task.name + task.id.toString()} 
-                    taskName={task.name} 
-                  />
-          })
-        }
+      <div>
+        <Summary tasks={this.state.tasks}/>
+        <div className='todo-container'>
+          {
+            this.state.tasks.map( (task) => {
+              return <Task 
+                      id={task.id}
+                      deleteTask={ this.deleteToDoList }
+                      updateTaskStatus={ this.toggleTaskDone }
+                      key={task.id} 
+                      {...task}
+                    />
+            })
+          }
+        </div>
       </div>
     )
   };
 }
 
-export default ToDo;
+export default ToDoList;
