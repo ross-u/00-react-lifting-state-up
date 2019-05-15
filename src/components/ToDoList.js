@@ -8,10 +8,8 @@ class ToDoList extends Component {
     super();
     this.state = {
       tasks: data,
-      tasksCompleted: 0
     };
     
-    this.toggleTaskDone = this.toggleTaskDone.bind(this);
     this.deleteTaskById = this.deleteTaskById.bind(this);   
     /*** 
       We bind the method because it will be called by a component (<Task> - object)
@@ -20,19 +18,6 @@ class ToDoList extends Component {
     ***/
   };
   
-  toggleTaskDone(id) {
-    const tasksCopy = [...this.state.tasks];
-    let tasksCompleted = this.state.tasksCompleted;
-
-    tasksCopy.forEach((oneTask) => {
-      if(oneTask.id === id) {
-        oneTask.isDone = oneTask.isDone ? false : true;
-        if (oneTask.isDone) tasksCompleted++;
-        else if (!oneTask.isDone) tasksCompleted--;        
-      }
-    })
-    this.setState( {tasks: tasksCopy, tasksCompleted } );
-  }
 
   /***  
     State shouldn't be modified directly. 
@@ -55,13 +40,12 @@ class ToDoList extends Component {
   render() {
     return (
       <div>
-        <Summary tasksCompleted={this.state.tasksCompleted}/>
+        <Summary />
         <div className='todo-container'>
         {
           this.state.tasks.map( (task) => {
             return <Task key={task.id} 
                     deleteTask={ this.deleteTaskById }
-                    updateTaskStatus={ this.toggleTaskDone }
                     {...task}
                   />
           })
