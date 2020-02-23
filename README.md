@@ -226,7 +226,7 @@ render() {
 
   <button className='add'
     onClick={()=> this.props.updateTaskStatus(this.props.id) }>
-{/*				    ⤤ 		  PASS METHOD AS PROP 		⤣								*/}
+{/*				    ⤤ 		  USE THE METHOD PASSED AS A PROP  		⤣								*/}
 
     {
         this.props.isDone ?			// 	 ⟻	UPDATE HERE
