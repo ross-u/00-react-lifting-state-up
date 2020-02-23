@@ -1,42 +1,45 @@
-import React from 'react';
+import React from "react";
 
 class Task extends React.Component {
-  state = {
-    taskCompleted: false
-  }
-
-  toggleTask () {
-    this.setState( { taskCompleted: !this.state.taskCompleted } )
-  }
-
   render() {
-  return (
-    <div className='task-card'>
-    <div className='task-card-half'>
-      <h1>{this.props.name}</h1>
-      {
-        this.state.taskCompleted ?
-        <h3 style={{color: 'green'}}>DONE ✅</h3>
-        :
-        <h3 style={{color: 'red'}}>PENDING</h3>
-      }
-    </div>
+    const {
+      name,
+      id,
+      description,
+      isDone,
+      deleteTask,
+      updateTaskStatus
+    } = this.props;
 
-    <div className='task-card-half'>
-      <h2><u> Task Description </u></h2>      
-      <p>{this.props.description}</p>
-      <button className='delete' onClick={ ()=> this.props.deleteTask(this.props.id) }>DELETE</button>
-      <button className='add' onClick={ ()=> this.toggleTask() }>
-      {
-        this.state.taskCompleted ?
-        <span>UNDO ❌</span>
-        :
-        <span>✅</span>
-      }
-      </button>
-    </div>
-  </div>
-  )}
+    return (
+      <div className="task-card">
+        <div className="task-card-half">
+          <h1>{name}</h1>
+
+          {isDone 
+            ? <h3 style={{ color: "green" }}>DONE ✅</h3>
+            : <h3 style={{ color: "red" }}>PENDING</h3>
+          }
+        </div>
+
+        <div className="task-card-half">
+          <h2> <u> Task Description </u> </h2>
+          <p>{description}</p>
+
+          <button className="delete" onClick={() => deleteTask(id)}>
+            DELETE
+          </button>
+
+          <button className="add" onClick={() => updateTaskStatus(id)}>
+            {isDone 
+              ? <span>UNDO ❌</span> 
+              : <span>✅</span>
+            }
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Task;
