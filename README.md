@@ -53,7 +53,7 @@ In our current example each `<Task>` card component is a `class` component and h
 
 ![img](https://i.imgur.com/yYWXobZ.png)
 
-We want to display in `<Summary>` component how many tasks is completed and to update that number whenever we click green button in any`<Task>` component.
+We want to display in `<Summary>` component how many tasks is completed and to update that number whenever we click green button in any of the `<Task>` components.
 
 In order to do that we have to lift the `state` to the closest common ancestor, so that both components can share access to the same value, as they both depend on it for this functionality.
 
