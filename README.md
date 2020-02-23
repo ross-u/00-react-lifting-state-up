@@ -186,7 +186,7 @@ render() {
                      {...task}
                      deleteTask={ this.deleteTaskById }
                      updateTaskStatus={ this.toggleTaskDone } />
-// 										 	 ⤤ 		  PASS METHOD AS PROP 		⤣
+//                  ⤤       PASS METHOD AS PROP 		⤣
 //			...
 //  ...
 ```
