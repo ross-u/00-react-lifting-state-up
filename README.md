@@ -280,7 +280,7 @@ function summary(props) {
     <div>
       <h1>TASKS COMPLETED:</h1>
       <p className="tasks-completed">{props.tasksCompleted}</p>
-      {/*        ⤤    HERE    ⤣        */}
+      {/*                            ⤤    HERE    ⤣        */}
     </div>
   );
 }
