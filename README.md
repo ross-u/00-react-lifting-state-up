@@ -226,7 +226,7 @@ render() {
 
   <button className='add'
     onClick={()=> this.props.updateTaskStatus(this.props.id) }>
-{/*				    ⤤ 		  USE THE METHOD PASSED AS A PROP  		⤣								*/}
+{/*          ⤤        USE THE METHOD PASSED AS A PROP  		⤣        */}
 
     {
         this.props.isDone ?			// 	 ⟻	UPDATE HERE
@@ -280,7 +280,7 @@ function summary(props) {
     <div>
       <h1>TASKS COMPLETED:</h1>
       <p className="tasks-completed">{props.tasksCompleted}</p>
-      {/*						  			  								⤤  	  HERE    	⤣	     */}
+      {/*                            ⤤    HERE    ⤣        */}
     </div>
   );
 }
