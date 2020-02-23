@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Task from './Task';
-import Summary from './Summary';
-import data from './../data.js';
+import React, { Component } from "react";
+import Task from "./Task";
+import Summary from "./Summary";
+import data from "./../data.js";
 
 class ToDoList extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: data,
+      tasks: data
     };
 
     this.deleteTaskById = this.deleteTaskById.bind(this);
@@ -21,6 +21,7 @@ class ToDoList extends Component {
   /***  
     1. State shouldn't be modified directly and `splice()` modifies the orginal array it's called on. 
     Therefore we're using the spread operator to copy the array first. ;)
+    As an alternative we can also use the `.filter` method.
   ***/
   deleteTaskById(id) {
     const taskListCopy = [...this.state.tasks];
