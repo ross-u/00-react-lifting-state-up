@@ -186,7 +186,7 @@ render() {
                      {...task}
                      deleteTask={ this.deleteTaskById }
                      updateTaskStatus={ this.toggleTaskDone } />
-// 										 	 ⤤ 		  PASS METHOD AS PROP 		⤣
+//                  ⤤       PASS METHOD AS PROP 		⤣
 //			...
 //  ...
 ```
@@ -226,7 +226,7 @@ render() {
 
   <button className='add'
     onClick={()=> this.props.updateTaskStatus(this.props.id) }>
-{/*        ⤤      USE THE METHOD PASSED AS A PROP    ⤣     */}
+{/*				    ⤤ 		  USE THE METHOD PASSED AS A PROP  		⤣								*/}
 
     {
         this.props.isDone ?			// 	 ⟻	UPDATE HERE
