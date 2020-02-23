@@ -53,23 +53,31 @@ In our current example each `<Task>` card component is a `class` component and h
 
 ![img](https://i.imgur.com/yYWXobZ.png)
 
-We want to display in `<Summary>` component how many tasks is completed and to update that number whenever we click green button in any of the `<Task>` components.
+In the `<Summary>` component we want to display how many tasks are completed and update that number whenever we click on a green button in any of the `<Task>` components.
 
-In order to do that we have to lift the `state` to the closest common ancestor, so that both components can share access to the same value, as they both depend on it for this functionality.
+In order to do that we have to "lift the `state`" (some information that will be used by both components) to the closest common ancestor above them, so that both components can have access to the same value, as they both depend on it for this functionality.
 
 <br>
+
+### Lifting the state from `<Task />` component, up to the `<ToDoList />`
 
 The next step is to remove the state from the `<Task />` components and lift it to the parent `<ToDoList />`, and create an additional method which will enable the functionality of calculating the number of tasks completed, as represented in the below image:
 
 ![img](https://i.imgur.com/REJyV9U.png)
 
+<hr>
+
 <br>
 
-#### Remove state object from the `<Task>` component
+#### Remove the `state` object from the `<Task />` component
 
-**First we will remove `state` from `<Task>` component** and instead create a new property in the `state` of `<ToDoList>` which is the most common ancestor of `<Task>` and `<Summary>`.
+<br>
 
-**This is lifting of the `state` to the closest common ancestor.**
+**First we will remove `state` from the `<Task />` component** and instead create a new property in the `state` of the `<ToDoList />` which is the most common ancestor of `<Task />` and `<Summary />`.
+
+**We are lifting the `state` from `<Task />` to the closest common ancestor.**
+
+<br>
 
 ##### `src/components/Task.js`
 
