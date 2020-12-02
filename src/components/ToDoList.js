@@ -7,10 +7,12 @@ class ToDoList extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: data
+      tasks: data,
+      tasksCompleted: 0,
     };
 
     this.deleteTaskById = this.deleteTaskById.bind(this);
+    this.setCompletedTasks = this.setCompletedTasks.bind(this);
     /*** 
       We bind the method because it will be invoked by another component (<Task> - object)
       Without binding, `this` will not be refering to the `<ToDoList>` component.
@@ -29,22 +31,33 @@ class ToDoList extends Component {
     let tasksCompleted = this.state.tasksCompleted;
 
     taskListCopy.forEach((taskObj, index) => {
-      if (taskObj.id === id) {
+      console.log("taskObj", taskObj);
+      if (taskObj.id === id && !taskObj.isDone) {
         taskListCopy.splice(index, 1);
         tasksCompleted--;
       }
     });
     this.setState({ tasks: taskListCopy, tasksCompleted });
   }
+  setCompletedTasks(status) {
+    let tasksCompleted = this.state.tasksCompleted;
+    !status ? tasksCompleted++ : tasksCompleted--;
+    this.setState({ tasksCompleted });
+  }
 
   render() {
     return (
       <div>
-        <Summary />
+        <Summary tasks={this.state.tasksCompleted} />
         <div className="todo-container">
-          {this.state.tasks.map(task => {
+          {this.state.tasks.map((task) => {
             return (
-              <Task key={task.id} deleteTask={this.deleteTaskById} {...task} />
+              <Task
+                key={task.id}
+                setCompletedTasks={this.setCompletedTasks}
+                deleteTask={this.deleteTaskById}
+                {...task}
+              />
             );
           })}
         </div>
