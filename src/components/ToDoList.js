@@ -13,8 +13,9 @@ class ToDoList extends Component {
     this.deleteTaskById = this.deleteTaskById.bind(this);
     /*** 
       We bind the method because it will be invoked by another component (<Task> - object)
-      Without binding, `this` will be refering to `<Task>` component that invoked the method.
+      Without binding, `this` will not be refering to the `<ToDoList>` component.
       We `bind` `this` as we need it to point to <ToDoList> component (object) that holds the `state`.
+      We can as well create the method as an arrow function to solve this issue of losing context.
     ***/
   }
 
